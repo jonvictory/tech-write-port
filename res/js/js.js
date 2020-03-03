@@ -29,14 +29,14 @@ let pageUrls = [
 
 //top-nav-menu//
 
-$("#top-nav").append('<ul id="top-nav-items" class="nav nav-pills justify-content-end">' + '</ul>')
+$("#top-nav").append('<ul id="top-nav-items" class="nav justify-content-end">' + '</ul>')
 
 let topNav = function() {
 
   for (x = 0; x < pageUrls.length; x++) {
     $("#top-nav-items").append(
       '<li class="nav-item">' +
-        '<a class="nav-link" id="' +
+        '<a class="nav-li" id="' +
         pageUrls[x] +
         '"href="./' +
         pageUrls[x] +
@@ -51,12 +51,12 @@ topNav();
 //end top nav//
 
 //begin side nav//
-$("#side-menu").append('<div class="menu-nav-space"><p class="menu-nav-header">Get started</p></div>')
+$("#side-menu").append('<div><p class="menu-nav-header">Navigation</p></div>')
 
   for (x = 0; x < pageUrls.length; x++) {
     $("#side-menu").append(
       '<li class="nav-item menu-nav-li">' +
-        '<a class="nav-link" id="' +
+        '<a class="nav-li" id="' +
        pageUrls[x] +
         '"href="./' +
        pageUrls[x] +
@@ -84,6 +84,7 @@ let currentPageDecision = function() {
       if (pageId === pageUrls[i]) {
         let navId = document.getElementById(pageUrls[i]);
         navId.classList.add("active");
+        navId.classList.add("disabled")
 
       }
       else;
