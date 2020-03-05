@@ -19,8 +19,16 @@ html,body,h2,h3,h4,h5,h6 {
     z-index: -10 !important;
   }
   .logo {
-      padding: 2em;
-      z-index: 10 !important;
+    display: block;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10 !important;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .active {
     color: darkslategrey !important;
@@ -43,10 +51,9 @@ html,body,h2,h3,h4,h5,h6 {
     }
     
 .menu-nav-space {
-  /* padding: 1em 0em 0em 5em; */
   overflow: wrap !important;
   background-color: rgb(241, 241, 241);
-  height: 100%;
+  height: 100vh;
 }
 .menu-nav-cont {
   
@@ -85,3 +92,9 @@ html,body,h2,h3,h4,h5,h6 {
   padding: 2em 0em 2em 3em;
   z-index: -10;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }
