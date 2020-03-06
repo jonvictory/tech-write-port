@@ -1,0 +1,102 @@
+<head>
+        <title id="admin-title">GUIs</title>
+        <link rel="stylesheet" href="../../res/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    </head>
+    <header>
+            <!-- Navbar -->
+            <div class="container" id="admin-cont-nav"></div>
+          </header>
+    <body>
+        <!--title-->
+        <div class="container-fluid">
+                <div class="container head-tain">
+                    <h1 id="cur-page-title"></h1>
+                  </div>
+            <!-- Sidebar -->
+            <div class="row">
+                <div class="col-2 menu-nav-align">
+                    <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+                </div>
+                <!-- Unique Page Content -->
+                <div class="main-tain col-8">
+                    <p><a href="#Why">Why use a GUI REST client?</a></p>
+	    	    <p><a href="#Why2">Why use Postman?</a></p>
+             <p>
+		    <a href="navigation.html">Return to Navigation</a>
+	    </p>
+        <a name="Why"></a><h2>Why use a GUI REST&#160;client?</h2>
+        <p>GUI REST clients give you a visually-based organizational system for making requests to API databases and analyzing responses. Typically, they also include many other convenient features, like the ability to save requests and responses that you have made to different API databases.</p>
+	    <p>GUI clients also allow you to quickly request endpoints using various methods without having to know any specific code or syntax, which is necessary when using command-line based clients like cURL.</p>
+ 
+        <a name="Why2"></a><h2>Why use Postman?</h2>
+        <p>Postman is a GUI REST client that is free to download and is available for both PC and Mac. All of the examples covered in the getting started section will be demonstrated in Postman. You can download your free copy directly from the publisher via their website <a href="https://www.getpostman.com/downloads/">GetPostman.com.</a></p>
+        <h2>Postman layout</h2>
+        <p>Postman has many convenient features that simplify the processes involved with APIs. To learn more about all the features, it is recommended that you consult the resources provided by the Postman development team. For the purposes of completing the project at the end of the Workfront Getting Started documentation, it is important that you are familiar with 4 main areas of the Postman layout:</p>
+        <ul>
+            <li><p><a href="#request">The request section</p></a></li>
+            <li><p><a href="#parameter">The parameter section</a></p></li>
+            <li><p><a href="#response">The response section</a></p></li>
+            <li><p><a href="#history">The history section</a></p> </li>
+        </ul>
+
+        </p>
+        <a name="request"></a><h3>The request section</h3>
+        <p>This section contains the URI field that you will use to make your request. Notice that Postman doesn't require you to include the method as a part of the URI. Instead you can select the method via the drop down menu, which is located in the lower left-hand corner of the section. </p>
+        <p>The request section also features tabbed browsing. This feature is an important organizational tool which allows you to work on different requests without the need to close others. </p>
+        <img class="fit" src="../../res/img/REQUESTsectBIGpic.png"/>
+        <a name="parameter"></a><h3>The parameter section</h3>
+        <p>In the parameters section, Postman will automatically populate a list of all the query parameters that are included in your URI. Postman will also include the values of those parameters, if they are available.</p>
+        <p>After this list populates you can use the value field of each corresponding parameter to change its value, rather than having to go back and change the paramter in the URI directly.</p>
+        <p>There is also a description field which allows you to write a short description for each parameter, in your own words.</p>
+        <p>In the example included below, Postman has identified 3 query parameters and their corresponding values:
+            <ul>
+                <p><li>name: The value of this parameter is "newer task", which is the name of the new task which is to be created when this request is made.</li></p>
+                <p><li>projectID: The value of this parameter is "5d260d67. . ." this is a truncated version of the project ID under which "newer task" is being created.</li></p>
+                <p><li>sessionID: The value of this parameter is "7c82391. . ." which is truncated, and is used to authenticate the request being made.</li></p>
+            </ul>
+            <img class="fit" src="../../res/img/PARAMsectBIGpic.png"/>
+        </p>
+        <a name="response"></a><h3>The response section</h3>
+        <p>The response section contains the information which is returned to you after making a request. In the top left-hand corner of the response section some of the header information is displayed for easy access. For example, the Status of the response featured below is "200" which indicates that the server received the request and delivered a response correctly.</p>
+        <img class="fit" src="../../res/img/RESPONSsectBIGpic.png"/>
+        <a name="history"></a><h3>The history section</h3>
+        <p>The history section keeps track of all the requests that you've made over time. There is also a toggle switch to save your responses. Having a history section allows you to review the work that you've done, without having to remake a request. </p>
+        <img class="fit" src="../../res/img/HISTsectBIGpic.png"/>
+       </div>
+       </div>
+       </div>
+       <script src="../../res/js/js.js"></script>
+        </body>
+        <footer>
+                <div class="container-fluid foot-pad">
+                    <div class="row">
+                      <div class= "col-md">
+                        <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                        
+                      </div>
+                      <div class= "col-md">
+                          <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                      </div>
+                      <div class= "col-md">
+                          <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                          
+                      </div>
+                      <div class= "col-md">
+                          <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                        <ul class="foot-list">
+                          </div>
+                      <div class= "col-md">
+                          <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                        </div>
+                      <div class= "col-md">
+                          <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                        </div>
+                    </div>
+                  </div>
+            </footer>
+</html>

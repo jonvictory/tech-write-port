@@ -1,0 +1,103 @@
+     <head>
+	    <title id="admin-title">Request</title>
+        <link rel="stylesheet" href="../../res/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    </head>
+    <header>
+            <!-- Navbar -->
+            <div class="container" id="admin-cont-nav"></div>
+          </header>
+        <body>
+             <!--title-->
+             <div class="container-fluid">
+                    <div class="container head-tain">
+                        <h1 id="cur-page-title"></h1>
+                      </div>
+                <!-- Sidebar -->
+                <div class="row">
+                    <div class="col-2 menu-nav-align">
+                        <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+                    </div>
+                    <!-- Unique Page Content -->
+                    <div class="main-tain col-8">
+        <p>
+		<a href="#RESTful">Anatomy of a request</a></li>
+        </p>
+        <p>
+		<a href="#Examples">Examples of Workfront API&#160;Requests</a>
+        </p>
+ <p>
+		    <a href="navigation.html">Return to Navigation</a>
+	    </p>
+	
+        <h2><a name="RESTful"></a>Anatomy of a request</h2>
+        <p>Requests are commands that  access information from an API server. When a request is made, the system will return resources based on the various components that are specified in your request. Generally speaking, all of your Requests should consist of:</p>
+        <ul>
+            <li><b>URI:</b> The Uniform Resource Identifier specifies the location of a particular Resource that can be called/accessed via Request.</li>
+            <p>
+                <img class="fit"class="fit" src="../../res/img/URI.png"/>
+            </p>
+            <li><b>Endpoints</b> An Endpoint is a descriptive name for a resource. In this case, the endpoint being accessed is the task, for the purposes of a creating a new task.</li>
+            <p>
+                <img class="fit" src="../../res/img/Endpoint.png"/>
+            </p>
+            <li><b>Methods:</b> The method specifies how a resource may be accessed (POST, GET, PUT, DELETE). In this case, the POST method is being used in reference to the task object. This method, along with the other parameters specified in the body of the URI, tell the server to create a new task. In this case, the new task will be called "new task" and it will be created under the project with the ID "5cf0415a009ec7f654918e8ae696aab9".</li>
+            <p>
+                <img class="fit" src="../../res/img/METHOD.png"/>
+            </p>
+            <li><b>Parameters:</b> Parameters are options that are specific to an endpoint and corresponding method. There are four main types of parameters:
+			<ul><li><b>Header Parameters:</b> These are included in the request header and most often deal with authentication. Below, the session ID "3f9898132ec7436ba2196b9dfb9efd35" is being used to authenticate the request to create a task called "new task".</li><p><img src="../../res/img/HEADparam.png" style="width: 800px;height: 35px;" /></p><li><b>Path Parameters:</b> Path parameters are reserved for requesting information about a specific object and are separated from other parameters using a "/" in the URI. This request will return detailed information about a specific project with the ID "5d260d67002031daced35946cc3c1600".</li><p><img src="../../res/img/PATHparam.png" style="width: 800px;height: 35px;" /></p><li><b>Query String Parameters:</b> These parameters are used to specify information about an object or query and are first declared with the question mark symbol "?", then they separated from other parameters by the ampersand symbol "&amp;".This request will create a task called "new task" inside the project with the ID "5cf0415a009ec7f654918e8ae696aab9".</li><p><img src="../../res/img/QUERYparam.png" style="width: 800px;height: 35px;" /></p></ul></li>
+            <li><b>Body:</b> The body includes information that is being sent to the server</li>
+            <p>
+                <img class="fit" src="../../res/img/REQBOD.png"/>
+            </p>
+        </ul>
+        <h2><a name="Examples"></a>Examples of Workfront API&#160;Requests</h2>
+        <ul>
+            <p><li>This is an example of a URI for loging in to your Workfront instance. There is no endpoint because you aren't attempting to access a resource, but instead logging in.</li></p>
+            <div class="codesamp">https://<span class="param">Your Domain</span>.workfront.com/attask/api/v11.0/login?username=<span class="param">ADMIN</span>&amp;password=<span class="param">PASSWORD</span>&amp;method=POST</div>
+            <p><li>This is an example of a request to create a new project called "BANANA":</li></p>
+            <div class="codesamp">https://<span class="param">Your Domain</span>.workfront.com/attask/api/v11.0/project?name=<span class="param">New Project</span>&amp;sessionID=<span class="param">SESSION ID NUMBER</span>&amp;method=POST</div>
+            <p><li>This is an example of a request to update project "New Project" with a new name "Newer Project" (note that capitalization matters).</li></p>
+            <div class="codesamp">https://<span class="param">Your Domain</span>.workfront.com/attask/api/project?ID=<span class="param">PROJECT ID</span>&amp;name=<span class="param">Newer Project</span>&amp;sessionID=<span class="param">SESSION ID</span>&amp;method=PUT</div>
+            <p><li>This is an example of a request to create a new task called "NEW TASK"</li></p>
+            <div class="codesamp">https://<span class="param">Your Domain</span>.workfront.com/attask/api/v11.0/task?name=<span class="param">New Task</span>&amp;projectID=<span class="param">PROJECT ID</span>&amp;sessionID=<span class="param">SESSION ID</span>&amp;method=POST</div>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <script src="../../res/js/js.js"></script>
+    </body>
+    <footer>
+            <div class="container-fluid foot-pad">
+                <div class="row">
+                  <div class= "col-md">
+                    <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                    
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                      
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                    <ul class="foot-list">
+                      </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                    </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </footer>
+</html>

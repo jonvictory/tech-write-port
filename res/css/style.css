@@ -116,12 +116,16 @@ html,body,h2,h3,h4,h5,h6 {
 .card-proj {
     font-size: 1em;
     padding: 1em;
+    margin: 1em;
     color: grey;
+}
+.card-card {
+    color: red;
 }
 .card-proj a:hover {
     color: grey;
-    padding: .5em;
-    background-color: lightgray;
+    
+    background-color: rgb(236, 236, 236);
     text-decoration: none;
   }
   .card-proj a:link {

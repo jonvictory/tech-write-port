@@ -1,0 +1,227 @@
+<head>
+    <title id="admin-title">cURL</title>
+    <link rel="stylesheet" href="../../res/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+</head>
+<header>
+        <!-- Navbar -->
+        <div class="container" id="admin-cont-nav"></div>
+      </header>
+<body>
+    <!--title-->
+    <div class="container-fluid">
+            <div class="container head-tain">
+                <h1 id="cur-page-title"></h1>
+              </div>
+        <!-- Sidebar -->
+        <div class="row">
+            <div class="col-2 menu-nav-align">
+                <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+            </div>
+            <!-- Unique Page Content -->
+            <div class="main-tain col-8">
+     <ul style="list-style-type: none;">
+    <li><p><a href="#usingCurl">Using cURL</a></p></li>
+    <li><p><a href="#multiple-parameters">Update Multiple Parameters</a></p></li>
+    <li><p><a href="#multiple-parameters-JSON">Update Multiple Parameters with JSON</a></p></li>
+    <li><p><a href="#project">Create a new project</a></p></li>
+    <li><p><a href="#analyzepost">Analyze the POST response</a></p></li>
+    <li><p><a href="#read">Read information about your new project</a></p></li>
+    <li><p><a href="#analyzeget">Analyze the GET response</a></p></li>
+    <li><p><a href="#update">Update the information in your new project</a></p></li>
+    <li><p><a href="#analyzeput">Analyze the PUT response</a></p></li>
+    <li><p><a href="#delete">Delete your new project</a></p></li>
+    <li><p><a href="#analyzedelete">Analyze the DELETE response</a></p></li>
+    <li><p><a href="#print">Print your JSON response</a></p></li>
+    <li><p><a href="navigation.html">Return to Navigation</a></p></li>
+     </ul>
+
+<a name="usingCurl"><h2>Using cURL to update objects</a></h2>
+    <p>Postman is a good tool for organizing your requests and responses, and it's one of many GUI programs that are used by API programmers. Another industry standard tool that is used throughout industry is called cURL. This tool is a UI, but unlike Postman, it isn't a graphic UI. The reason why cURL is so widely used is because it is a command line tool which was built to interface with many different protocols, including HTTP. The versitility of cURL and command line access make it a powerful and relatively simple platform to interface your APIs with. </p>
+    <p>On most iOS machines, and most new Windows machines, cURL comes installed as a factory default. To check if your machine already has cURL installed, you can open your Mac Terminal, or Windows Command Prompt and type: </p>
+    <div class="codesamp">curl -V</div>
+    <p>The following is a response from a Windows machine, but the response on a iOS machine should be mostly similar, with iOS references substituted for the Windows references:</p>
+    <div class="codesamp">curl 7.55.1 (Windows) libcurl/7.55.1 WinSSL<br>
+            Release-Date: [unreleased]<br>
+            Protocols: dict file ftp ftps http https imap imaps pop3 pop3s smtp smtps telnet tftp<br>
+            Features: AsynchDNS IPv6 Largefile SSPI Kerberos SPNEGO NTLM SSL</div>
+
+        <p>If you received a response that is not similar to the one above, you do not have cURL installed on your machine. To obtain cURL free from its offical release site visit: <a href="http://www.https://curl.haxx.se/download.html">cURL.haxx.se</a>.</p>
+
+        <p>To begin, <a href="https://support.workfront.com/hc/en-us/articles/218484047-Managing-API-Keys-for-the-Workfront-System">obtain an apiKey</a> from the instance of Workfront that you are using. This key will be used to authenticate the requests that you pass through cURL. </p>
+
+        <p>To start, here is an example of a basic login request:</p>
+        <div class="codesamp">
+                curl -X POST "https://workfrontdocs.workfront.com/attask/api/login" -d "username=twilliams@hawkeye.com" -d "password=WorkSmart!"
+        </div>
+        <p>This may look similar to a requests that you've made using Postman, but there are some differences. Notice that to begin a cURL request in the command line, you prepend "curl" to the begining of your request. The next part of the request "-X POST" specifies the method of your request. If nothing is specified for the method, cURL will typically default to making a GET request. Following the method is the URI where you are sending your request to. </p>
+
+        <p>The next two parts, preceded by the "-d" are known as "options" in cURL. The "-d" option is telling the API that you are passing data that needs to be evaluated. In this case, a "username" and "password". Currently, cURL has over 200 different options. A list of these options can be found on their <a href="https://curl.haxx.se/docs/manpage.html">official documentation</a> page. Or, you can access them directly through cURL by submitting the requests: "curl -h" or "curl --manual". </p>
+
+        <p>Here is what the return for that request should look like:</p>
+        <div class="codesamp">
+                {"data":{"versionInformation":{"lastUpdated":"2019\/09\/05 17:35:17","release":"R16","currentAPI":"v10.0","apiVersions":{"v2.0":"\/attask\/api\/v2.0\/","v3.0":"\/attask\/api\/v3.0\/","v4.0":"\/attask\/api\/v4.0\/","v5.0":"\/attask\/api\/v5.0\/","v6.0":"\/attask\/api\/v6.0\/","v7.0":"\/attask\/api\/v7.0\/","v8.0":"\/attask\/api\/v8.0\/","v9.0":"\/attask\/api\/v9.0\/","v10.0":"\/attask\/api\/v10.0\/"},"version":"4.0","buildNumber":"482f618860fdcd42cca509031eaeff590a1feb13"},"timeZoneName":"Mountain Standard Time","iso3Language":"eng","timeZone":"US\/Mountain","currency":{"useNegativeSign":false,"symbol":"$","decimalSeparator":".","fractionDigits":2,"ID":"USD","groupingSeparator":","},"sessionID":"52c70143d2964547a7d4f692f1d4d684","iso3Country":"USA","locale":"en_US","userID":"5a04d1f300051cbc48fbeb944b95c4bd"}}
+        </div>
+        <p>Notice that this can be reformatted with line breaks for easier reading:</p>
+        <div class="codesamp">
+                {"data":{"versionInformation":{"lastUpdated":"2019\/09\/05 17:35:17",<br>
+                "release":"R16",<br>
+                "currentAPI":"v10.0",<br>
+                "apiVersions":{"v2.0":"\/attask\/api\/v2.0\/",<br>
+                "v3.0":"\/attask\/api\/v3.0\/",<br>
+                "v4.0":"\/attask\/api\/v4.0\/",<br>
+                "v5.0":"\/attask\/api\/v5.0\/",<br>
+                "v6.0":"\/attask\/api\/v6.0\/",<br>
+                "v7.0":"\/attask\/api\/v7.0\/",<br>
+                "v8.0":"\/attask\/api\/v8.0\/",<br>
+                "v9.0":"\/attask\/api\/v9.0\/",<br>
+                "v10.0":"\/attask\/api\/v10.0\/"},<br>
+                "version":"4.0",<br>"buildNumber":"482f618860fdcd42cca509031eaeff590a1feb13"},<br>
+                "timeZoneName":"Mountain Standard Time",<br>
+                "iso3Language":"eng",<br>
+                "timeZone":"US\/Mountain",<br>
+                "currency":{"useNegativeSign":false,<br>
+                "symbol":"$",<br>
+                "decimalSeparator":".",<br>
+                "fractionDigits":2,<br>
+                "ID":"USD",<br>
+                "groupingSeparator":",<br>"},<br>
+                "sessionID":"52c70143d2964547a7d4f692f1d4d684",<br>"iso3Country":"USA",<br>
+                "locale":"en_US",<br>
+                "userID":"5a04d1f300051cbc48fbeb944b95c4bd"}}
+        </div>
+        <p>Using the apiKey that was generated for your instance of Workfront, or the sessionID that was returned with your login, create a project using the following: </p>
+        <div class="codesamp">
+                curl -X POST "https://workfrontdocs.workfront.com/attask/api/v10.0/proj" -d "name=NewProject" -H "apiKey: f69o2acf6idpow3hlc3btmrgbtdjalk2" -v
+        </div>
+
+        <p>You can now receive information about that project by requesting:</p>
+        <div class="codesamp">
+                C:\>curl -X GET "https://jonhuynh.my.workfront.com/attask/api/v10.0/project/5d7abf161240f2b514613bdc80358f8a" -H "apiKey: f69o2acf6idpow3hlc3btmrgbtdjalk2" -v
+        </div>
+        <p>Notice that this request returns the same information that was returned by the system when you created it.</p>
+
+        <a name="multiple-parameters"></a><h2>Update using multiple parameters at once</h2>
+
+        <P>If you would like to update more than one property of this project at a time, you can use cURL to send additional headers, in a manner similar to what was demonstrated above.</P>
+
+        <P>This method is fine if you only need to make a small number of updates, to a small number of properties, on a small number of objects. However, in such cases, it might actually be easier to use the Workfront UI instead of parsing through code. Ideally, you should be using the Workfront API to simplify processes that are not easy to carry out via the Workfront UI, or to create features which do not exist in the UI. </P>
+
+        <a name="multiple-parameters-JSON"></a><h2>Update multiple parameters using a JSON document</h2>
+
+        <p>One way to speed up the efficiency of making API requests is to create a JSON file which can be used to update multiple objects and properties at the same time.</p>
+
+        <p>This simplified example demonstrates the process of updating multiple properties on the new project that you just created:</p>
+
+        <ol>
+            <li>Start by opening a plain-text document.</li>
+            <li>Copy the contents of the response that you received when making the last GET request about your project.</li>
+            <li>Reformat this content so that it looks like the following:</li>
+            <div class="codesamp">
+                    {<br>
+                    "ID":"5d7abf161240f2b514613bdc80358f8a",<br>
+                    "name":"NewProject",<br>
+                    "objCode":"PROJ",<br>
+                    "percentComplete":0.0,<br>
+                    "plannedCompletionDate":"2019-09-15T06:00:00:000-0600",<br>
+                    "plannedStartDate":"2019-09-15T06:00:00:000-0600",<br>
+                    "priority":0,<br>
+                    "projectedCompletionDate":"2019-09-15T06:00:00:000-0600",<br>
+                    "status":"PLN"<br>
+                
+                }<br>
+            </div>
+            <li>Save the document with a file name that you can easily recall using the extension: .JSON. Make sure that you save the document in a location that you can locate easily--this is important.</li>
+            <li>Don't close the document after you save it.</li>
+            <li>Using Terminal, or your command prompt, navigate to the folder where you saved your JSON file. In this case, the file's name is "curlTest.JSON" and it is located in the directory "C:\cURL". This is an example of how to navigate to the directory "cURL" from the "C:\" drive and view its contents using the "dir" command:</li>
+            <div class="codesamp">
+C:\><br>
+C:\>cd curl<br>
+C:\cURL> dir<br>
+Directory of C:\cURL<br>
+curlTest.JSON<br>
+           1 File(s)            413 bytes<br>
+           <br>
+C:\cURL><br>
+            </div>
+            <li>Inside the JSON document, edit the fields that you wish to update. </li>
+            <blockquote class="note">
+                Depending on your default project settings, not all fields will be immediately available for update. Endpoints like percentComplete may require you to pass additional information with your request, or change the settings of your project.
+            </blockquote>
+            <div class="codesamp">
+                {<br>
+                        "ID": "5d7abf161240f2b514613bdc80358f8a",<br>
+                        "name": <span class="param">"LatestName",</span><br>
+                        "objCode": "PROJ",<br>
+                        "percentComplete": 0.0,<br>
+                        "plannedCompletionDate": "2019-09-15T06:00:00:000-0600",<br>
+                        "plannedStartDate": "2019-09-15T06:00:00:000-0600",<br>
+                        "priority": <span class="param">4,</span><br>
+                        "projectedCompletionDate": "2019-09-15T06:00:00:000-0600",<br>
+                        "status": <span class="param">"CUR"</span><br>
+                }<br>
+            </div>
+            <li>After updating your document, save it and close it.</li>
+            <li>Use the following cURL command to send your document to the Workfront API and update your project:</li>
+            <div class="codesamp">
+                curl -X PUT "https://workfrontdocs.workfront.com/attask/api/v9.0/proj/5d7abf161240f2b514613bdc80358f8a" -d @curlTest.json  -H "Content-Type: application/json" -H "Accept: application/json" -H "apiKey: f69o2acf6idpow3hlc3btmrgbtdjalk2"
+            </div>
+        </ol>
+
+        If the request was successful, you should receive a response that is near identical to the response that was received with your previous GET request about this project, but it should reflect the changes that you specified in your JSON document. This is a response that has been formatted for reading:
+        <div class="codesamp">
+            {<br>
+                "Data": {<br>
+                "ID": "5d7abf161240f2b514613bdc80358f8a",<br>
+                "name": "LatestName",<br>
+                "objCode": "PROJ",<br>
+                "percentComplete": 0.0,<br>
+                "plannedCompletionDate": "2019-09-15T06:00:00:000-0600",<br>
+                "plannedStartDate": "2019-09-15T06:00:00:000-0600",<br>
+                "priority": 0,<br>
+                "projectedCompletionDate": "2019-09-15T06:00:00:000-0600",<br>
+                "status": "PLN"<br>
+            }<br>
+        }<br>
+        </div>
+        <blockquote class="note">
+            Notice that the data heading is returned with the response, but will not be accepted if it is sent with a request.
+        </blockquote>
+
+        <p>There are many different ways that you can interact with the Workfront API. Using cURL is one way to simplify the process of updating or viewing multiple objects by using JSON documents.</p>
+       </div>
+       </div>
+       </div>
+       <script src="../../res/js/js.js"></script>
+       </body>
+       <footer>
+            <div class="container-fluid foot-pad">
+                <div class="row">
+                  <div class= "col-md">
+                    <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                    
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                      
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                    <ul class="foot-list">
+                      </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                    </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                    </div>
+                </div>
+              </div>
+        </footer>

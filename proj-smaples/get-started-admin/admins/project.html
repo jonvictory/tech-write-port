@@ -1,0 +1,168 @@
+     <head>
+	    <title id="admin-title">Project</title>
+	    <link rel="stylesheet" href="../../res/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    </head>
+    <header>
+            <!-- Navbar -->
+            <div class="container" id="admin-cont-nav"></div>
+          </header>
+        <body>
+             <!--title-->
+             <div class="container-fluid">
+                    <div class="container head-tain">
+                        <h1 id="cur-page-title"></h1>
+                      </div>
+                <!-- Sidebar -->
+                <div class="row">
+                    <div class="col-2 menu-nav-align">
+                        <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+                    </div>
+                    <!-- Unique Page Content -->
+                    <div class="main-tain col-8">
+	     <ul style="list-style-type: none;">
+        <li><p><a href="#download">Download Postman</a></p></li>
+        <li><p><a href="#obtain">Obtain authentication</a></p></li>
+        <li><p><a href="#request">Make a request</a></p></li>
+        <li><p><a href="#project">Create a new project</a></p></li>
+        <li><p><a href="#analyzepost">Analyze the POST response</a></p></li>
+        <li><p><a href="#read">Read information about your new project</a></p></li>
+        <li><p><a href="#analyzeget">Analyze the GET response</a></p></li>
+        <li><p><a href="#update">Update the information in your new project</a></p></li>
+        <li><p><a href="#analyzeput">Analyze the PUT response</a></p></li>
+        <li><p><a href="#delete">Delete your new project</a></p></li>
+        <li><p><a href="#analyzedelete">Analyze the DELETE response</a></p></li>
+        <li><p><a href="#print">Print your JSON response</a></p></li>
+        <li><p><a href="navigation.html">Return to Navigation</a></p></li>
+         </ul>
+         <h2>Putting it all together</h2>
+         <p>The underlying structure behind all APIs is the process of making requests and translating responses into information that can be utilized for other purposes. The Workfront API can be utilized for creating additional functionality to interface with your Workfront instance, or for generating custom reports. Whether you're building a program or creating a report, the basis is still the same: call and response.</p>
+        <a name="download"></a><h2>Download Postman</h2>
+        <p>The following project will be handled primarily with Postman. If you have not done so already, visit <a href="https://www.getpostman.com/downloads/">GetPostman.com.</a> and download a free copy of their software to get started.</p>
+        <a name="obtain"></a><h2>Obtain Authentication</h2>
+        <p>Before you can submit a request to the Workfront API, you'll need to obtain the proper authentication. This example shows you how to establish authentication by logging into your Workfront account and requesting an API Key, through Postman. This API Key can be used to validate all of your requests, regardless of the method used.</p>
+            <p>Log in to your Workfront account and generate an API Key for yourself by using this URI:</p>
+                <div class="codesamp">https://<span class="param">YourDomain</span>.workfront.com/attask/api/v10.0/USER/generateApiKey?username=<span class="param">YourUserName</span>&password=<span class="param">YourPassword</span>&meth=PUT</div>
+                <p>Here is an example of a complete URI and where to enter it in Postman:</p>
+                <img class="fit" src="../../res/img/LOGINexample.png"/>
+            <p>If the information that you sent is correct, there are 2 possible responses:</p>
+            <ul>
+                <li><p>200 Response (OK): The request was processed successfully, an API Key was generated for your account, and it was returned in the response body.</p></li>
+                <li><p>401 Response (Unauthorized): The request was received by the system, but you lack the proper authority to create an API Key.</p></li>
+            </ul>
+            <p>The 200 Response resembles the following:</p>
+            <div class="codesamp">
+                <p>{</p>
+                    <p>"data": {</p>
+                        "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                    <p> }</p>
+                <p>}</p>
+            </div>
+            <p>In this example, the string of x's represents a random string of 32 characters. This string is the API Key that you generated.</p>
+            
+            <p>This same API Key can be used in future sessions, as long as it hasn't expired. You can retrieve your current API Key at any time by using the following URI:</p>
+            <div class="codesamp">
+                    https://<span class="param">YourDomain</span>.workfront.com/attask/api/v10.0/USER?action=getApiKey&username=<span class="param">YourUserName</span>&password=<span class="param">YourPassword</span>&meth=PUT</div>
+            
+            <p>You can also manage your API Keys via the Workfront UI, which includes the ability to create new keys. You can find additional information about how to access these features via the Workfront UI in the support article <a href="https://support.workfront.com/hc/en-us/articles/218484047-Managing-API-Keys-for-the-Workfront-System">Managing API Keys for the Workfront System</a>.</p>
+        <a name="request"></a><h2>Make a request</h2>
+        <p>In the Workfront API, a request can complete all of the actions as defined by the RESTful CRUD acronym:</p>
+            <ul>
+                <li><b>C</b>reate</li>
+                <li><b>R</b>ead</li>
+                <li><b>U</b>pdate</li>
+                <li><b>D</b>elete</li>
+            </ul>
+        <p>The corresponding RESTful HTTP operations to the aforementioned actions are:</p>
+        <ul>
+            <li>POST: allows you create a new object</li>
+            <li>GET: allows you to view an object</li>
+            <li>PUT: allows you to update an already existing object with new information</li>
+            <li>DELETE: allows you to delete an existing object</li>
+        </ul>
+        <a name="project"></a><h2>Create a new project</h2>
+        <p>To Create a new project in your instance of Workfront, use the following URI and the POST method:</p>
+        <div class="codesamp">https://<span class="param">YourDomain</span>.workfront.com/attask/api/v11.0/project?name=<span class="param">Name of New Project</span>&sessionID=<span class="param">YourSessionID</span></div>
+        <blockquote class="note">Notice that spaces are permitted in the project name parameter.</blockquote>
+        <p>Here is an example of what that looks like in Postman:</p>
+        <img class="fit" src="../../res/img/REQexamp.png"/>
+        <a name="analyzepost"></a><h2>Analyze the POST response</h2>
+        <p>The response returned from the Workfront API contains information about the project that you just created in your instance of Workfront.</p>
+        <p>Notice how each field in the response has a descriptive name that tells you something different about the project:
+            <ul>
+                <li>ID: The ID field specifies the unique Workfront ID assigned to the new project that you just created.</li>
+                <li>name: is the name that you assigned to the project.</li>
+                <li>objcode: is a code which refers to the type of object that was created.</li>
+                <li>percentcomplete: is a percentage of how much of the project has been completed.</li>
+                <li>plannedStartDate: refers to the planned start date of the project</li>
+                <li>priority: is the level of priority that has been assigned to the project</li>
+                <li>plannedCompletionDate: refers to the planned completion date of the project</li>
+                <li>status: is what phase the project is in. For example, a new project should always begin in the planning phase, unless otherwise specified. The planning phase is denoted simply by "PLN".</li>
+                
+            </ul>
+        </p>
+        <a name="read"></a><h2>Read information about your new project</H2>
+            <p>Now that an object exists in your portfolio, you can make a GET request to read information about that object. Use the unique Workfront ID that was assigned to your new project to make a GET request in this format:</p>
+
+            <img class="fit" src="../../res/img/PROJgetREQ.png">
+
+            <a name="analyzeget"></a><h2>Analyze the GET response</h2>
+
+            <img src="../../res/img/PutWFDocsProjectResponse.png"/>
+
+            <a name="update"></a>><h2>Update the information in your new project</h2>    
+            <p>To make changes or updates to your new project, you can use a PUT request. An object may have several different ways for you to update its information. In this case, you can use the PUT method and the UPDATE action to update the parameters that make up your project. The following is a PUT request to change the name of "Example Project" to "Even Newer Project":</p>
+
+            <img src="../../res/img/PutWFDocsProjectCall.png"/>
+
+            <a name="analyzeput"></a><h2>Analyze the PUT response</h2>
+            <p>Notice that the project has returned nearly the same data that was returned from the GET request made earlier except that the name field has been updated. Nearly all of the parameters displayed in this response can be updated with a PUT request similar to the one made above.</p>
+
+            <img src="../../res/img/PutWFDocsProjectResponse.png"/>
+
+            <a name="delete"></a><h2>Delete your new project</h2>
+            <p>If you decide that you no longer want your new project, you can delete it by making a request using the DELETE method.</p>
+            
+            <img src="../../res/img/DELETEcall.png"/>
+
+            <a name="analyzedelete"></a><h2>Analyze the DELETE response</h2>
+            <p>The DELETE response is short and simple. The "success" field returns a boolean value indicating whether or not the deletion was carried out.</p>
+
+            <img src="../../res/img/DELETEresponse.png"/>
+            <script src="../../res/js/js.js"></script>
+            </div>
+            </div>
+    </body>
+    <footer>
+            <div class="container-fluid foot-pad">
+                <div class="row">
+                  <div class= "col-md">
+                    <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                    
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                      
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                    <ul class="foot-list">
+                      </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                    </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </footer>
+</html>

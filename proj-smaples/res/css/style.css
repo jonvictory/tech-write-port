@@ -1,0 +1,102 @@
+html,body,h2,h3,h4,h5,h6 {
+  font-family: "Roboto", sans-serif;
+  color: darkslategrey;
+
+}
+h3 {
+  padding-top: 1em;
+}
+h1 {
+  color: darkslategrey;
+  background-color: white;
+  border-bottom: 2px solid lightgrey;
+}
+.active {
+  color: white;
+  font-weight: 450;
+  background-color: darkgrey;
+  padding: 4px 0 4px 0;
+  height: 48px;
+}
+
+
+.nav-pad {
+  padding-bottom: 2em !important;
+}
+
+.menu-nav-align {
+text-align: left;
+}
+
+.menu-nav-space {
+  /* padding: 1em 0em 0em 5em; */
+  overflow: wrap !important;
+  background-color: rgb(241, 241, 241);
+  height: 100%;
+}
+.menu-nav-cont {
+  
+  height: 100%;
+}
+.menu-nav-header {
+  color: white;
+  background-color: darkorange;
+  text-align: center;
+}
+.menu-nav-li:hover {
+  color: white !important;
+  background-color: darkorange !important;
+}
+.menu-nav-li:link {
+  color: darkslategrey !important;
+}
+.menu-nav-li:visited {
+  color: darkslategrey !important;
+}
+.head-tain {
+  padding: 2em 0em 2em 3em !important;
+  z-index: -10 !important;
+}
+
+.foot-pad {
+  margin-top: 5em;
+  padding: 4em 1em 5em 1em;
+  border-top: 2px solid lightgrey;
+}
+
+.foot-head {
+        
+        text-align: center;
+    }
+
+    .foot-head:link {
+      color: darkslategrey !important;
+    }
+    .foot-head:hover {
+      color: orange !important;
+    }
+    .foot-head:visited {
+      color: darkslategrey !important;
+    }
+.ui-logo {
+  padding-left: 1em;
+}
+
+blockquote.note
+{
+	border: solid 1px #1e90ff;
+	padding: 0px 0px 0px 8px;
+}
+
+div.codesamp
+{
+	background-color: #E6E6E6;
+  padding: 15px 0px 15px 48px;
+  letter-spacing: 1.5px;
+  overflow: auto;
+}
+
+.param {
+  font-weight:bold;
+  font-style: italic;
+}

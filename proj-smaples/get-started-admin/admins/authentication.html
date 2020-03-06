@@ -1,0 +1,156 @@
+<head>
+    <title id="admin-title">Authentication</title>
+    <link rel="stylesheet" href="../../res/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+</head>
+<header>
+    <!-- Navbar -->
+    <div class="container" id="admin-cont-nav"></div>
+  </header>
+<body>
+     <!--title-->
+     <div class="container-fluid">
+            <div class="container head-tain">
+                <h1 id="cur-page-title"></h1>
+              </div>
+        <!-- Sidebar -->
+        <div class="row">
+            <div class="col-2 menu-nav-align">
+                <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+            </div>
+            <!-- Unique Page Content -->
+            <div class="main-tain col-8">
+    <p>
+        <a href="#Obtain">Obtain an API Key through your Workfront instance</a>
+    </p>
+    <p>
+        <a href="#Log">Log In and obtain a Session ID through your API Client</a>
+    </p>
+    <p>
+        <a href="#Cookie">Cookie Authentication</a>
+    </p>
+    <p>
+        <a href="navigation.html">Return to Navigation</a>
+    </p>
+    <p>The Workfront API authenticates each request to ensure that you have the correct access privileges to perform the necessary operations. </p>
+    <h2><a name="Obtain"></a>Obtain an API Key through your Workfront instance</h2>
+    <p>One way to authenticate your requests is to obtain an API Key. There are a few different ways to obtain an
+        API&#160;Key, but the following is a method that doesn't require you to use an API client, or make any API
+        calls. To obtain an API Key from your instance of Workfront:</p>
+    <ol>
+        <p>
+            <li>Log in to your instance of Workfront.</li>
+        </p>
+        <p>
+            <li>Click <b>Setup</b> in the <b>Global Navigation Bar</b>.</li>
+        </p>
+        <p>
+            <li>
+        </p>
+        <p><b>Click System</b>&gt; <b>Customer Info</b>.</p>
+        </li>
+        <p>
+            <li>In the <b>API Key Settings</b> section, click <b>Generate API Key</b>.</li>
+        </p>
+        <p>
+            <li>Your active keys are listed under <b>Your User's API Key</b> section</li>
+        </p>
+    </ol>
+    <p>Attaching this API Key to your requests provides the highest level of authentication and validates your requests
+        for all methods: GET, PUT, POST, and DELETE.</p>
+
+    <blockquote class="note">Remeber that your API key can be used to unlock your Workfront account and should never be
+        documented or shared.</blockquote>
+    <h2>How to attach a key to your requests</h2>
+    <p>A standard request will have a basic structure that resembles this format:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/API/v11.0/<span class="param">Object</span>?<span
+            class="param">Action</span>&amp;<span class="param">Parameters</span>&amp;<span class="param">Method</span>
+    </div>
+    <p>
+        To pass your API Key along with your request, simply add the request parameter "apiKey" (note the case
+        sensitivity) into your request, before listing the method:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/API/v11.0/<span class="param">Object</span>?<span
+            class="param">Action</span>&amp;<span class="param">Parameters</span>&amp;<span
+            class="param">apiKey</span>&amp;<span class="param">Method</span>
+    </div>
+    <p>A request to create a project named "NEW&#160;PROJECT" would look similar to this, where {API KEY} is replaced
+        with the API&#160;key that you obtained from your instance of Workfront:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/API/v11.0/project?name=NEW PROJECT&amp;apiKey=<span
+            class="param">apiKey</span>&amp;method=POST
+    </div>
+
+    <h2><a name="Log"></a>Log In and obtain a Session ID through your API Client</h2>
+    <p>Another method for authentication is to log in to your Workfront account through your API client. After you log
+        in to your account, you can obtain a Session ID that works similarly to an API Key, except that it will expire
+        with your session. </p>
+    <p>Here is an example of how to log in to your account using a request call in your API client:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/api/v11.0/login?username=<span class="param">Your WF
+            login</span>&amp;password=<span class="param">Your WF password</span>
+    </div>
+    <p>This request will return a JSON response which contains your session attributes, including your new User and
+        Session IDs. Attaching your Session ID to your requests using the "sessionID" (note case sensitivity) parameter
+        to your requests will authenticate you for all methods.</p>
+    <h3>How to attach your Session ID to your requests</h3>
+    <p>Attaching your Session ID to requests is identical to passing your API Key, except that you replace the "apiKey"
+        parameter with "sessionID". Your request will look similar to the following:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/API/v11.0/project?name=<span class="param">NEW
+            PROJECT</span>&amp;sessionID=<span class="param">sessionID</span>&amp;method=POST
+    </div>
+    <p>This is the same request that was outlined above, which creates a project called "NEW PROJECT", except the
+        request will be validated with the "sessionID" parameter instead of the "apiKey" parameter.</p>
+
+    <h2>How to log out</h2>
+    <p>When a session is complete, you can use the following request to log out, preventing any further access with your
+        current Session ID:</p>
+    <div class="codesamp">
+        <span class="param">Your Domain</span>.workfront.com/attask/api/v11.0/logout?sessionID=<span
+            class="param">sessionID</span>
+    </div>
+    <h2><a name="Cookie"></a>Cookie Authentication</h2>
+    <p>If your API Client is set up to accept cookies, logging in will also provide you with authentication through
+        cookies. This allows you to pass certain requests without adding a Session ID or API Key to your call. However,
+        these requests are limited almost exclusively to the GET method.</p>
+        
+        </div>
+        </div>
+        </div>
+        <script src="../../res/js/js.js"></script>
+</body>
+<footer>
+        <div class="container-fluid foot-pad">
+            <div class="row">
+              <div class= "col-md">
+                <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                
+              </div>
+              <div class= "col-md">
+                  <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+              </div>
+              <div class= "col-md">
+                  <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                  
+              </div>
+              <div class= "col-md">
+                  <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                <ul class="foot-list">
+                  </div>
+              <div class= "col-md">
+                  <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                </div>
+              <div class= "col-md">
+                  <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                </div>
+            </div>
+          </div>
+    </footer>
+
+</html>

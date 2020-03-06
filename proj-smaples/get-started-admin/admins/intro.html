@@ -1,0 +1,122 @@
+    <!DOCTYPE html>
+    <head>
+        <title id="admin-title">Intro</title>
+        <link rel="stylesheet" href="../../res/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    </head>
+    <header>
+            <!-- Navbar -->
+            <div class="container" id="admin-cont-nav"></div>
+          </header>
+        <body>
+             <!--title-->
+             <div class="container-fluid">
+                    <div class="container head-tain">
+                        <h1 id="cur-page-title"></h1>
+                      </div>
+                <!-- Sidebar -->
+                <div class="row">
+                    <div class="col-2 menu-nav-align">
+                        <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+                    </div>
+                    <!-- Unique Page Content -->
+                    <div class="main-tain col-8">
+        <p>
+            <a href="#What">What is an Application Program Interface (API)?</a>
+        </p>
+        <p>
+            <a href="#The">REST architecture</a>
+        </p>
+        <p>
+            <a href="#Postman">Graphic User Interface (GUI) REST client</Ma>
+        </p>
+        <p>
+            <a href="#Authenti">Authentication</a>
+        </p>
+        <p>
+            <a href="#Send">Requests</a>
+        </p>
+        <p>
+            <a href="#Analyze">Responses</a>
+        </p>
+        <p>
+            <a href="#Put">Project: Using the Workfront API</a>
+        </p>
+         <p>
+		    <a href="navigation.html">Return to Navigation</a>
+	    </p>
+        <h2><a name="What"></a>What is an Application Program Interface (API)?</h2>
+        <p>At its most basic level, an Application Program Interface (API) functions as a translator between other programs that might not speak the same language. For example, a program that facilitates communication between a program on your laptop and a remote server is a simple representation of an API. </p>
+        <p>A specific example of an API would be a program like Google Maps. When you search for a  map, the application requests information from Google's servers and displays the response on your phone screen. Notice that Google Maps works across many different devices, whether those devices are based on software from Microsoft, Android, Apple, or any other popular platform. This is possible because the coding for the graphic user interface (GUI) aspect of the program differs by platform, but the language that Google Maps uses to make requests (from Google servers) and distribute responses (across different devices) is essentially the same. To summarize, Google Maps is an API because it can receive input from different platforms, translate that input for Google's servers, then display the information that it receives.</p>
+
+        <p>The Workfront API is a platform that allows developers to construct custom features that may not be included as part of a standard Workfront release. Using the Workfront API, you can integrate Workfront with different programs, build custom reports, or even construct your own programs that interface directly with Workfront and Workfront products.</p>
+
+        <h2><a name="The"></a>The Workfront API&#160;and REST architecture</h2>
+        <p>The goal of the Workfront API is to simplify building integrations for Workfront by introducing a REST architecture that operates over HTTP. Representational State Transfer (REST) is a software architectural style specific to web services. Programs that are built using REST architecture are considered to be RESTful. RESTful APIs make programming more accessible, code easier to work with, and programs scalable across multiple platforms. </p>
+        <p>Among the different types of web-service architecture, the two most widely used are Simple Object Access Protocol (SOAP) and Representational State Transfer (REST). SOAP is much older than REST, and it's still widely used because of its power and versatility. However, SOAP can also be cumbersome, confusing, and slow, especially with relation to web-based services. REST&#160;has become increasingly popular because it's simple, easy to learn, and efficient. This is largely due to the fact that REST architecture is structurally closer to web-based services than SOAP. Additionally,  REST is language agnostic and can facilitate communication between different computers, programs, and servers--regardless of their operating languages--while SOAP operates on an exclusively XML-based protocol.</p>
+        <p>To learn more about REST architecture and how it applies to the Workfront API visit <a href="rest.html">REST architecture</a></p>
+        <h2><a name="Postman"></a>Graphic User Interface REST client</h2>
+        <p>Working with APIs requires familiarity with a variety of user interfaces (UIs). For the purposes of simplicity, the examples featured throughout the Getting Started documentation will be featured primarily from a program called Postman.</p>
+        <p>Postman is a GUI client that makes the text-based requests and responses of APIs easier to read and organize. With the ability to save requests, responses, authentication credentials, and many more convenient features, Postman is more than just a visualization tool. Additionally, Postman works well with many other popular UIs and is available free for both PC and Mac platforms.</p>
+        <p>For more details about Postman and how you it is used to interact with the Workfront API visit <a href="gui.html">GUI REST client</a></p>
+        <h2><a name="Authenti"></a>Authentication</h2>
+        <p>It's rare to encounter an API&#160;database that doesn't require some sort of authentication. It might seem obvious, but it's worth noting that many API databases deal with sensitive information. While there are a lot of API databases that are open source and don't necessarily deal with sensitive information, companies that maintain these data sets typically require some sort of authentication to track how their information is being used. </p>
+        <p>The Workfront API&#160;requires authentication because it deals with information that is confidential to different companies and individuals within those organizations. In order to perform operations using Workfront API functions, the correct authentication credentials are always required and vary depending on which methods you are using. </p>
+        <p>For more information about Authentication and how to authenticate all of your requests with the Workfront API visit <a href="authentication.html">Authentication </a></p>
+        <h2><a name="Send"></a>Requests</h2>
+        <p>There are numerous ways to utilize an API,  but at the core of every program is the process of sending requests and receiving responses. Before jumping right in and sending requests directly from your own program, it's important to test your requests using a UI client like Postman. This allows you to make sure that your calls are being sent correctly and to analyze what is being returned in the response.</p>
+        <p>To learn more about how a request is made to the Workfront API&#160;visit <a href="request.html">Requests</a></p>
+        <h2><a name="Analyze"></a>Responses</h2>
+        <p>After sending a request from your UI&#160;client (as described in "<MadCap:xref href="#Send">Send a request</MadCap:xref>"), the server sends you a response consisting of:</p>
+        <ul>
+            <p><li><b>Status code:</b> 3-digit code that indicates what type of response has been sent</li></p>
+            <p><li><b>Header:</b> Gives additional details about a response</li></p>
+            <p><li><b>The body:</b> Contains the bulk of information from the response</li></p>
+        </ul>
+        <p>If the resource that you requested exists and has been structured correctly, the body of the response contains the information that you need for your program.</p>
+        <p>To learn more about responses, what they mean, and how they are used, visit <a href="response.html">Responses</a></p>
+        <h2><a name="Put"></a>Project: Using the Workfront API</h2>
+        <p>A small project at the end of the Getting Started documentation guides you through the process of interacting with the Workfront API.</p>
+        <ol>
+            <p><li>Start by authenticating your identity. This ensures that you have the credentials necessary to access the information that you're looking for.</li></p>
+            <p><li>Next, practice making request calls through Postman and analyzing the responses returned by the Workfront API servers. </li></p>
+            <p><li>Finally, create a web application that prints the information returned from your request into a file that can be viewed using another program, such as a web viewer or text editor. </li></p>
+        </ol>
+        <p>For a quick guide on how to build your own Workfront API visit <a href="project.html">Project: Using the Workfront API</a></p>
+        </div>
+        </div>
+                </div>
+                <script src="../../res/js/js.js"></script>
+    </body>
+    <footer>
+            <div class="container-fluid foot-pad">
+                <div class="row">
+                  <div class= "col-md">
+                    <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                    
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                      
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                    <ul class="foot-list">
+                      </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                    </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                    </div>
+                </div>
+              </div>
+        </footer>
+</html>

@@ -1,0 +1,121 @@
+     <head>
+	    <title id="admin-title">REST</title>
+	    <link rel="stylesheet" href="../../res/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    </head>
+	<header>
+            <!-- Navbar -->
+            <div class="container" id="admin-cont-nav"></div>
+          </header>
+        <body>
+             <!--title-->
+             <div class="container-fluid">
+                    <div class="container head-tain">
+                        <h1 id="cur-page-title"></h1>
+                      </div>
+                <!-- Sidebar -->
+                <div class="row">
+                    <div class="col-2 menu-nav-align">
+                        <ul id="side-menu-admin" class="nav flex-column menu-nav-space menu-nav-cont"></ul>
+                    </div>
+                    <!-- Unique Page Content -->
+                    <div class="main-tain col-8">
+        <p>
+        <a href="#What">What is REST?</a>
+        </p>
+        <p>
+        <a href="#Why">Why REST architecture?</a>
+        </p>
+        <p>
+        <a href="#RESTful">RESTful operations</a>
+        </p>
+        <p>
+        <a href="#CRUD">CRUD operations</a>
+        </p>
+        <p>
+       <a href="#Workfron">Workfront API operations</a>
+        </p>
+	     <p>
+		    <a href="https://jonhuynh.gitlab.workfront.tech/apidocs/navigation">Return to Navigation</a>
+	    </p>
+        <h2><a name="What"></a>What is REST?</h2>
+        <p>The Workfront API conforms to a Representational State Transfer (REST) architecture standard. REST is a web development specification that  was  introduced to make web services easy to work with, consistent, fast, compatible, and scalable. While REST is a standard, there are certain allowances on how a program that conforms to REST architecture may be structured. Due to this flexibility, programs that conform to the REST standard are often referred to as RESTful.</p>
+        <p>There are six main constraints which are used to define the high-level characteristics of a RESTful API web service:</p>
+        <ul>
+            <p><li><b>Uniform Interface:</b> Implies that every resource on a server must be accessible in the same way, regardless of how those resources are being accessed. </li></p>
+             <p><li><b>Client-server:</b> This implies an independence between you, the client, and the server from which you request information from. That is, you should be able to make changes to your program without having an impact on the structure of the API servers that your program makes requests to. Conversely, changes made to the API servers where resources are stored shouldn't affect you, the client, or your programs that depend on those resources.</li></p>
+            <p> <li><b>Stateless:</b> When operations are stateless it means that a request contains all the information that is necessary for a server to fulfill that request. This implies that neither you or the server need to store any information in order to complete a request.</li></p>
+             <p><li><b>Cacheable:</b> Not all resources have to be cacheable, but if a resource is cacheable, it must make this known to you. Caching is important because it can help to reduce potential network stress.</li></p>
+            <p> <li><b>Layered system:</b> Layered systems transmit and store data from multiple servers, but a client should never be aware of which servers are sending or receiving particular requests and responses. </li></p>
+             <p><li><b>Code on demand (optional):</b> Is an optional constraint which has largely been ignored over the years. A code on demand system can automatically generate code and send it to a client, which automatically accepts the code. This constraint remains controversial, mainly with regard to security concerns.</li></p>
+        </ul>
+        <h2><a name="Why"></a>Why REST architecture?</h2>
+        <p>One of the biggest benefits of working with a RESTful API is versatility. The simplicity imposed by REST gives you the option to work with the programming language(s) of your choice, so long as your program can make requests using the main operators specified by the Workfront API. Similarly, Workfront isn't forced to constrain its server structures to any particular standard, so long as the necessary servers can communicate with the Workfront API servers correctly.</p>
+        <p>Since nearly any language can be used on both sides of the API, there are many different possibilities for how examples could be handled in the Workfront API&#160;documentation. For the purposes of simplicity, all of the examples contained in the Workfront API&#160;Documentation are handled in JSON. Using JSON throughout API&#160;documentation is a generally accepted practice throughout the industry. Additionally, JSON is the format in which information will be returned to you by the Workfront API servers. </p>
+        <h2><a name="RESTful"></a>RESTful operations</h2>
+        <p>While not a requirement of RESTful architecture, most RESTful APIs rely on Hyper Text Transfer Protocols (HTTP) to make requests and receive responses. HTTP limits the exchange of information between systems to these operations:</p>
+        <ul>
+            <li>GET</li>
+            <li>HEAD</li>
+            <li>POST</li>
+            <li>PUT</li>
+            <li>PATCH</li>
+            <li>DELETE</li>
+            <li>CONNECT</li>
+            <li>OPTIONS</li>
+            <li>TRACE</li>
+        </ul>
+        <h2><a name="CRUD"></a>CRUD operations</h2>
+        <p>It's a generally accepted practice to reduce RESTful API operations down to a spare number, regardless of which protocol you're using, based on the operations outlined in the CRUD acronym, which stands for:</p>
+        <ul>
+          <li><b>C</b>reate</li>
+          <li><b>R</b>ead</li>
+          <li><b>U</b>pdate</li>
+          <li><b>D</b>elete</li>
+        </ul>
+        <h2><a name="Workfron"></a>Workfront API operations</h2>
+        <p>The Workfront API utilizes HTTP methods, but--as is the case with most RESTful APIs--primarily relies on a more limited set of operators, which align with the operations specified by the CRUD acronym: </p>
+        <ul>
+            <li><b>POST:</b> <b>C</b>reates a new object</li>
+            <li><b>GET:</b> <b>R</b>eads information from Workfront Servers</li>
+            <li><b>PUT:</b> <b>U</b>pdates an existing object</li>
+            <li><b>DELETE:</b> <b>D</b>eletes an Object</li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <script src="../../res/js/js.js"></script>
+    </body>
+    <footer>
+            <div class="container-fluid foot-pad">
+                <div class="row">
+                  <div class= "col-md">
+                    <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/why-workfront">Why Workfront</a></h4>
+                    
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/solutions">Solutions</a></h4>
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/products">Products</a></h4>
+                      
+                  </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/resources">All Resources</a></h4>
+                    <ul class="foot-list">
+                      </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/services-and-support">Support</a></h4>
+                    </div>
+                  <div class= "col-md">
+                      <h4 class="foot-head"><a target="_blank" href="https://www.workfront.com/about-us">About</a></h4>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </footer>
+</html>
